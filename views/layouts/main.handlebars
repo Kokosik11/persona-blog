@@ -4,15 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Personal Blog | {{ title }}</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <header>
-        Personal blog by Konstantin Bozhko
+        <div class="header-content">
+            <div class="header-logo">
+                <div class="firstline">Personal blog</div>
+                <div class="secondline">by <span class="orange">Konstantin Bozhko</span></div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a {{#if_eq title "Главная" }}class="active"{{/if_eq}} href="/">Главная</a></li>
+                    <li><a {{#if_eq title "Блог" }}class="active"{{/if_eq}} href="/blog">Блог</a></li>
+                    <li><a {{#if_eq title "Контакты" }}class="active"{{/if_eq}} href="/contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="bottom-line"></div>
     </header>
-    {{{ body }}}
+
+    <main>
+        {{{ body }}}
+    </main>
+    
     <footer>
-        Footer
+        <div class="footer-content">
+            <form action="/quest" method="POST" class="question">
+                <h2>Задать вопрос</h2>
+                <input id="email" type="email" placeholder="Ваш e-mail">
+                <input id="quest" type="text" placeholder="Ваш вопрос">
+                <button>Отправить</button>
+            </form>
+            <div class="developer">
+                <div class="dev">by <span class="orange">Konstantin Bozhko</span></div>
+            </div>
+        </div>
     </footer>
+
 </body>
 </html>

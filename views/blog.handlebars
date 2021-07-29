@@ -1,1 +1,12 @@
 <h1>Blog</h1>
+
+<a href="/blog/writeBlog">Написать блог</a>
+<div class="posts">
+    {{#each posts}}
+        <div class="post" id="post_{{this._id}}">
+            <div class="post-image"><img src="{{staticURL this.image }}" alt="asdsad"></div>
+            <h2 class="post-title">{{this.title}}</h2>
+            <a href="/blog/post_{{this._id}}">Читать</a>
+        </div>
+    {{/each}}
+</div>
