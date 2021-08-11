@@ -1,8 +1,8 @@
-const Post = require('../models/Post.js');
+const PostModel = require('../models/Post.js');
 
 exports.blog = (req, res) => {
-    Post.find({}, function(err, allPosts){
-  
+    PostModel.find({}, function(err, allPosts){
+
         if(err) {
             console.log(err);
             return res.sendStatus(400);
@@ -15,19 +15,14 @@ exports.blog = (req, res) => {
     }).lean();
 }
 
-exports.writeBlog = (req, res) => {
-    res.render('writeBlog', { title: 'Написание статьи' });  
-}
+exports.post = (req, res) => {
+    const { postID } = req.params;
+    PostModel.findById(postID, (err, post) => { 
+        if(err) console.log(err);
 
-exports.createBlog = (req, res) => {
-    let postTitle = req.body["blog-title"];
-    let postImage = req.file;
-    let postContent = req.body["blog-content"];
-
-    let post = new Post( { title: postTitle, image: postImage.path, content: postContent });
-
-    post.save(function(err){
-        if(err) return console.log(err);
-        res.redirect("/blog");
-    });
+        res.render("post", {
+            title: post.title,
+            post: post
+        });
+    }).exec();
 }

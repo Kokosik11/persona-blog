@@ -156,7 +156,7 @@ nav ul li a:hover, .active {
     color: #D55448;
 }
 
-.question input[type="email"], input[type="text"] {
+.question input[type="email"], input[type="text"], input[type="password"] {
     background-color: #FFD6D2;
     border-radius: 44px;
     outline: none;
@@ -180,7 +180,7 @@ nav ul li a:hover, .active {
     color: #d3897c;
 }
 
-.question button {
+button {
     background-color: #D55448;
     border-radius: 44px;
     outline: none;

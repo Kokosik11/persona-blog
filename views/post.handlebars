@@ -1,0 +1,11 @@
+<div>
+    {{#each post}}
+    <h2>{{this.title}}</h2>
+    <div>
+        <img src="{{staticURL this.image}}" alt="{{this.title}}">
+    </div>
+    <div>
+        {{this.content}}
+    </div>
+    {{/each}}
+</div>

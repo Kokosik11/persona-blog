@@ -1,3 +1,6 @@
+const bcrypt = require('bcryptjs');
+const UserModel = require("../models/User");
+
 exports.main = (req, res) => {
     res.render('index', { title: 'Главная' });  
 }

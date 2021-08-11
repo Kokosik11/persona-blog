@@ -15,6 +15,7 @@ function if_smoller(a, b, opts) {
 
 function staticURL(a, opts) {
     // return opts.fn(this.replace('static/', ""))
+    if(typeof a != "string") a = String(a);
     return a.replace("static", "");
 }
 
