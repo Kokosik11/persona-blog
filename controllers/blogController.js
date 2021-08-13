@@ -19,10 +19,10 @@ exports.post = (req, res) => {
     const { postID } = req.params;
     PostModel.findById(postID, (err, post) => { 
         if(err) console.log(err);
-
+        
         res.render("post", {
             title: post.title,
             post: post
         });
-    }).exec();
+    }).lean();
 }

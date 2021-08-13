@@ -2,6 +2,23 @@
 
 <a href="/admin/writeBlog">Написать блог</a>
 
+<div class="posts">
+    {{#each posts}}
+        <div class="admin_post" id="{{this._id}}">
+            <span>{{this._id}}</span>
+            <span>{{this.title}}</span>
+
+            <form action="/admin/post/{{this._id}}/update" method="get">
+                <button class="delete">Изменить</button>
+            </form>
+
+            <form action="/admin/post/{{this._id}}/delete" method="post">
+                <button class="delete">Удалить</button>
+            </form>
+        </div>
+    {{/each}}
+</div>
+
 <form action="/admin/logout">
     <button>Выйти</button>
 </form>

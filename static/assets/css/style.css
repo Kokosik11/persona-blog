@@ -218,3 +218,8 @@ button {
 .post-image img {
     width: 300px;
 }
+
+.admin_post {
+    display: block;
+    width: 100%;
+}

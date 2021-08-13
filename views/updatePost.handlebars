@@ -1,0 +1,10 @@
+<form action="/admin/post/{{post._id}}/update" method="POST" enctype="multipart/form-data">
+    <br><label for="blogTitle">Заголовок статьи</label>
+    <br><input type="text" name="blog-title" id="blogTitle" placeholder="Заголовок статьи" value="{{post.title}}">
+    <br><label for="blogImage">Изображение статьи (не менять, если это не надо)</label>
+    <input type="file" name="blog-image" id="blogImage" accept="image/*,image/jpeg">
+    <br><label for="blogContent">Содержание статьи</label>
+    <br><textarea name="blog-content" id="blogContent">{{post.content}}</textarea>
+
+    <button>Сохранить</button>
+</form> 
