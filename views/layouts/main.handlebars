@@ -31,7 +31,7 @@
         {{{ body }}}
     </main>
     
-    <footer>
+    <footer {{#if admin}}hidden{{/if}}>
         <div class="footer-content">
             <form action="/quest" method="POST" class="question">
                 <h2>Задать вопрос</h2>

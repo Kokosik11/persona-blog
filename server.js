@@ -67,7 +67,8 @@ app.use((req, res, next) => {
 mongoose.connect("mongodb://localhost:27017/postsdb", { 
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 }, (err) => {
     if(err) return console.log(err);
     app.listen(3000, function(){

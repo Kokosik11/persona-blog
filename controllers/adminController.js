@@ -11,7 +11,7 @@ exports.admin = async (req, res) => {
     // let admin = new UserModel( {login: "admin", password: hashedPsw} );
     // admin.save();
 
-    res.render('admin', { title: 'Admin panel' });
+    res.render('admin', { title: 'Admin panel', admin: true });
 }
 
 exports.adminPost = (req, res) => {
@@ -45,7 +45,7 @@ exports.panel = (req, res) => {
             return res.sendStatus(400);
         }
 
-        res.render('adminPanel', { title: "Admin Panel", posts: allPosts.reverse() });
+        res.render('adminPanel', { title: "Admin Panel", posts: allPosts.reverse(), admin: true });
 
     }).lean();
 }
@@ -53,7 +53,7 @@ exports.panel = (req, res) => {
 
 
 exports.writeBlog = (req, res) => {
-    res.render('writeBlog', { title: 'Написание статьи' });  
+    res.render('writeBlog', { title: 'Написание статьи', admin: true });  
 }
 
 exports.createBlog = (req, res) => {
@@ -77,6 +77,8 @@ exports.deletePost = (req, res) => {
     PostModel.findByIdAndDelete(postID, (err) => {
         console.log(err);
     }).lean();
+
+    res.redirect("/admin/panel");
 }
 
 exports.updatePostPage = (req, res) => {
@@ -87,7 +89,8 @@ exports.updatePostPage = (req, res) => {
         
         res.render("updatePost", {
             title: post.title,
-            post: post
+            post: post, 
+            admin: true
         });
     }).lean();
 }
@@ -98,15 +101,51 @@ exports.updatePost = (req, res) => {
     let postImage = req.file;
     let postContent = req.body["blog-content"];
 
-    console.log(postID);
+    // console.log(postID);
 
     // let updatePost = new PostModel(postTitle, postImage, postContent);
     let updatePost = {};
     updatePost.title = postTitle;
-    if(postImage) updatePost.image = postImage;
+    if(postImage) updatePost.image = postImage.path;
     updatePost.content = postContent;
 
     PostModel.findByIdAndUpdate(postID, updatePost, (err) => {
         if(err) console.log(err);
+
+        res.redirect("/admin")
     }).lean();
+}
+
+exports.changePassGET = (req, res) => {
+    res.render("adminCngPass", { title: "Смена пароля", admin: true });
+}
+
+
+exports.changePassPOST = (req, res) => {
+    const { oldpass, newpass, repeatpass } = req.body;
+
+    let login = "admin";
+    let admin = UserModel.findOne({ login }, (err, admin) => {
+        if(!admin) { 
+            console.log("err 1")
+            return res.redirect('/admin/changePass');
+        }
+        
+        const isMatch = bcrypt.compareSync(oldpass, admin.password);
+        if(!isMatch) { 
+            console.log("err 2")
+            return res.redirect('/admin/changePass');
+        }
+
+        if(newpass !== repeatpass) {
+            console.log("err 3")
+            return res.redirect('/admin/changePass');
+        }
+
+        const hashedPsw = bcrypt.hashSync(newpass, 12);
+        admin.password = hashedPsw;
+        admin.save();
+        res.redirect('/admin/panel');
+    
+    });
 }

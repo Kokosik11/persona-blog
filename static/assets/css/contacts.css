@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Raleway:wght@400;500;600;700&display=swap');
+
+.contacts-heading {
+    color: #F35243;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 36px;
+    text-align: center;
+    padding: 20px;
+    text-shadow: 4px 4px 15px rgba(243, 82, 67, 0.4);
+}
+
+.contacts-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0 270px;
+}

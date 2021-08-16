@@ -1,0 +1,116 @@
+.admin-heading {
+    color: #F35243;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 36px;
+    text-align: center;
+    padding: 20px;
+    text-shadow: 4px 4px 15px rgba(243, 82, 67, 0.4);
+}
+
+.admin-writeblog {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #F35243;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.411);
+    transition: .25s;
+}
+
+.admin-writeblog:hover {
+    background-color: #ff7366;
+}
+
+.description {
+    position: absolute;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0);
+    text-align: left;
+    width: 150px;
+    top: -100px;
+    transform: rotateZ(270deg);
+    transition: .5s;
+}
+
+.admin-writeblog:hover .description {
+    color:rgb(0, 0, 0);
+    transition: .5s;
+}
+
+.exit, .change {
+    position: fixed;
+    bottom: 60px;
+    left: 55%;
+    transform: translateX(-50%);
+}
+
+.exit button, 
+.change button {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.411);
+    align-items: center;
+    transition: .25s;
+}
+
+.exit {
+    left: 59%;
+}
+
+.exit button:hover, 
+.change button:hover {
+    background-color: #ff7366;
+    cursor: pointer;
+}
+
+.exit button:hover > .description, 
+.change button:hover > .description{
+    color:rgb(0, 0, 0);
+    transition: .5s;
+}
+
+.admin_post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 40px;
+}
+
+.admin_post:nth-child(odd) {
+    background-color: #fddfdc;
+}
+
+.admin_post:nth-child(even) {
+    background-color: #fff3f2;
+}
+
+.admin_post .post-btns {
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+}
+
+.post-btns form button {
+    background-color: rgba(255, 255, 255, 0);
+    color: #F35243;
+    width: auto;
+    height: auto;
+    transition: .25s;
+}
+
+.post-btns form button:hover {
+    color: #792720;
+    cursor: pointer;
+}

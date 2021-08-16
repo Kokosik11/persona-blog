@@ -12,6 +12,8 @@ const isAuthAdmin = (req, res, next) => {
     else next(); 
 }
 
+adminRouter.post('/changePass', isAuth, adminController.changePassPOST);
+adminRouter.get('/changePass', isAuth, adminController.changePassGET);
 adminRouter.post('/post/:postID/update', isAuth, adminController.updatePost);
 adminRouter.get('/post/:postID/update', isAuth, adminController.updatePostPage);
 adminRouter.post('/post/:postID/delete', isAuth, adminController.deletePost);

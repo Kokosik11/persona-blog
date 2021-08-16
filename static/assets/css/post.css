@@ -1,0 +1,26 @@
+.post-page {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-heading {
+    color: #F35243;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 36px;
+    text-align: center;
+    padding: 20px;
+    text-shadow: 4px 4px 15px rgba(243, 82, 67, 0.4);
+}
+
+.post-image img,
+.post-content {
+    max-width: 1200px;
+}
+
+.post-content {
+    margin-top: 50px;
+    word-wrap: break-word;
+}

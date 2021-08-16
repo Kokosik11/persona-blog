@@ -1,12 +1,18 @@
-<h1>Blog</h1>
+<link rel="stylesheet" href="/assets/css/blog.css">
+
+<h1 class="blog-heading">Блог</h1>
 
 <div class="posts">
     {{#if posts}}
     {{#each posts}}
         <div class="post" id="post_{{this._id}}">
             <div class="post-image"><img src="{{staticURL this.image }}" alt="asdsad"></div>
-            <h2 class="post-title">{{this.title}}</h2>
-            <a href="/blog/post/{{this._id}}">Читать</a>
+            <div class="post-title">
+                <h2 class="post-heading">{{this.title}}</h2>
+            </div>
+            <a href="/blog/post/{{this._id}}">
+                <div class="btn-read">Читать</div>
+            </a>
         </div>
     {{/each}}
     {{else}}
