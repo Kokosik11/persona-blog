@@ -18,9 +18,11 @@
 .post-image img,
 .post-content {
     max-width: 1200px;
+    max-height: 500px;
 }
 
 .post-content {
+    width: 70%;
     margin-top: 50px;
     word-wrap: break-word;
 }

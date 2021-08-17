@@ -12,12 +12,14 @@ const isAuthAdmin = (req, res, next) => {
     else next(); 
 }
 
+adminRouter.post('/quests/:questID/delete', isAuth, adminController.deleteQuest);
+adminRouter.get('/quests', isAuth, adminController.quests);
 adminRouter.post('/changePass', isAuth, adminController.changePassPOST);
 adminRouter.get('/changePass', isAuth, adminController.changePassGET);
 adminRouter.post('/post/:postID/update', isAuth, adminController.updatePost);
 adminRouter.get('/post/:postID/update', isAuth, adminController.updatePostPage);
 adminRouter.post('/post/:postID/delete', isAuth, adminController.deletePost);
-adminRouter.get('/writeBlog', isAuth, adminController.writeBlog);
+adminRouter.get('/post/add', isAuth, adminController.writeBlog);
 adminRouter.post('/createBlog', isAuth, adminController.createBlog);
 adminRouter.get('/logout', isAuth, adminController.logout);
 adminRouter.get('/panel', isAuth, adminController.panel);

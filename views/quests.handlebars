@@ -1,0 +1,16 @@
+<div>
+    {{#each quests}}
+    <div>
+        <div>
+            <span>{{this.email}}</span>
+            <span>{{this.content}}</span>
+        </div>
+    </div>
+    <div>
+        <form action="/admin/quests/{{this._id}}/delete" method="POST">
+            <button>Удалить</button>
+        </form>
+    </div>
+    
+    {{/each}}
+</div>

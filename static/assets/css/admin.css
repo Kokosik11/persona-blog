@@ -46,13 +46,14 @@
     transition: .5s;
 }
 
-.exit, .change {
+.exit, .change, .quests {
     position: fixed;
     bottom: 60px;
     left: 55%;
     transform: translateX(-50%);
 }
 
+.quests button, 
 .exit button, 
 .change button {
     width: 50px;
@@ -67,12 +68,18 @@
     left: 59%;
 }
 
+.quests {
+    left: 45%;
+}
+
+.quests button:hover, 
 .exit button:hover, 
 .change button:hover {
     background-color: #ff7366;
     cursor: pointer;
 }
 
+.quests button:hover > .description, 
 .exit button:hover > .description, 
 .change button:hover > .description{
     color:rgb(0, 0, 0);
@@ -113,4 +120,17 @@
 .post-btns form button:hover {
     color: #792720;
     cursor: pointer;
+}
+
+.views {
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff7366;
 }

@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const PostModel = require('../models/Post.js');
 const { update } = require('../models/User');
 const UserModel = require("../models/User");
+const QuestModel = require("../models/Quest");
+const ViewsModel = require("../models/ViewsQuest")
 
 // const editor = new Quill
 
@@ -45,7 +47,9 @@ exports.panel = (req, res) => {
             return res.sendStatus(400);
         }
 
-        res.render('adminPanel', { title: "Admin Panel", posts: allPosts.reverse(), admin: true });
+        ViewsModel.findById("611ba3c7edbbf71a204976a8", (err, data) => {
+            res.render('adminPanel', { title: "Admin Panel", posts: allPosts.reverse(), admin: true, views: data.views });
+        })
 
     }).lean();
 }
@@ -148,4 +152,33 @@ exports.changePassPOST = (req, res) => {
         res.redirect('/admin/panel');
     
     });
+}
+
+exports.quests = (req, res) => {
+    QuestModel.find({}, function(err, quests){
+
+        if(err) {
+            console.log(err);
+            return res.sendStatus(400);
+        }
+
+        ViewsModel.findByIdAndUpdate("611ba3c7edbbf71a204976a8", { views: 0 }, err => {
+            if(err) console.log(err);
+        })
+
+        res.render('quests', { title: "Admin Panel", quests: quests.reverse(), admin: true });
+
+    }).lean();
+}
+
+exports.deleteQuest = (req, res) => {
+    const { questID } = req.params;
+
+    console.log(questID);
+
+    QuestModel.findByIdAndDelete(questID, (err) => {
+        console.log(err);
+    }).lean();
+
+    res.redirect("/admin/quests");
 }

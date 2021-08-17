@@ -28,6 +28,7 @@
 .post-image img {
     width: 286px;
     height: 252px;
+    object-fit: cover;
 }
 
 .post-title {
