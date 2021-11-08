@@ -8,10 +8,16 @@ const ViewsModel = require("../models/ViewsQuest")
 
 // const editor = new Quill
 
-exports.admin = async (req, res) => {
-    // const hashedPsw = await bcrypt.hash("qwerty123", 12);
-    // let admin = new UserModel( {login: "admin", password: hashedPsw} );
-    // admin.save();
+exports.admin = (req, res) => {
+    UserModel.find({})
+        .then(users => {
+            if(users) {
+                const hashedPsw = bcrypt.hashSync("qwerty123", 12);
+                let admin = new UserModel( {login: "admin", password: hashedPsw} );
+                admin.save();
+            }
+        })
+    
 
     res.render('admin', { title: 'Admin panel', admin: true });
 }
@@ -48,7 +54,11 @@ exports.panel = (req, res) => {
         }
 
         ViewsModel.findById("611ba3c7edbbf71a204976a8", (err, data) => {
-            res.render('adminPanel', { title: "Admin Panel", posts: allPosts.reverse(), admin: true, views: data.views });
+            if(data) {
+                res.render('adminPanel', { title: "Admin Panel", posts: allPosts.reverse(), admin: true, views: data.views  });
+            } else {
+                res.render('adminPanel', { title: "Admin Panel", posts: allPosts.reverse(), admin: true });
+            }
         })
 
     }).lean();

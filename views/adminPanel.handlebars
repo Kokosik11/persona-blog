@@ -10,6 +10,7 @@
 </a>
 
 <div class="posts">
+    {{#if posts}}
     {{#each posts}}
         <div class="admin_post" id="{{this._id}}">
             <span>{{this._id}}</span>
@@ -26,6 +27,9 @@
             </div>
         </div>
     {{/each}}
+    {{else}}
+    <h3>Список постов пуст</h3>
+    {{/if}}
 </div>
 
 <form class="exit" action="/admin/logout">
@@ -59,5 +63,9 @@
         <div class="description">Вопросы</div>
     </button>
 
+    {{#if views}}
     <div class="views">{{ views }}</div>
+    {{else}}
+    <div class="views">0</div>
+    {{/if}}
 </form>
